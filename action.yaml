@@ -22,6 +22,7 @@ runs:
       run: mkdir -p /tmp/tx
       shell: bash
     - name: Download the CLI
+      if: ${{ hashFiles('/tmp/tx/tx') == '' }}
       run: curl -o- https://raw.githubusercontent.com/transifex/cli/master/install.sh | bash -s -- ${{ inputs.version }}
       working-directory: /tmp/tx
       shell: bash
